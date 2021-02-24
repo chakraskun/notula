@@ -1,8 +1,8 @@
 module Api
     module V1
         class NotesController < ApplicationController
-            before_action :check_login, only: %i[create]
-            before_action :check_owner, only: %i[update destroy]
+            # before_action :check_login, only: %i[create]
+            # before_action :check_owner, only: %i[update destroy]
 
             def index
                 note = Note.all
@@ -15,8 +15,10 @@ module Api
             end
 
             def create
+                binding.pry
                 note = Note.new(note_params)
                 if note.save
+                    note.noteteamlists.create(team_id: params[:note][:team][:id])
                     render json: NotesSerializer.new(note, options).serialized_json
                 else
                     render json: {error: note.errors.messages}, status: 422
@@ -44,7 +46,7 @@ module Api
             private
 
             def note_params
-                params.require(:note).permit(:letternum, :agenda, :datetim, :minutes, :addnote, :attendance)
+                params.require(:note).permit(:letternum, :agenda, :datetim, :minutes, :addnote, :attendance, noteteamlists: [:note_id, :team_id])
             end
 
             def options
