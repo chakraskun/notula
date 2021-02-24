@@ -17,7 +17,7 @@ gem 'rswag'
 gem 'rspec-rails'
 gem 'dotenv-rails'
 gem 'rexml'
-gem "bcrypt", "~> 3.1"
+gem "bcrypt"
 
 
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -41,4 +41,3 @@ end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "bcrypt", "~> 3.1"
