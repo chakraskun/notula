@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_075714) do
+ActiveRecord::Schema.define(version: 2021_02_24_093800) do
 
   create_table "members", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_075714) do
     t.text "addnote"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "attendance"
   end
 
   create_table "noteteamlists", force: :cascade do |t|

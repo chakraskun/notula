@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   namespace :api do
     namespace :v1 do
       get 'tokens/create'
@@ -11,7 +13,7 @@ Rails.application.routes.draw do
       resources :tokens, only: [:create]
       resources :teams
       resources :members
-      resources :notes
+      resources :notes, only: %i[show index create update]
     end
   end
 end

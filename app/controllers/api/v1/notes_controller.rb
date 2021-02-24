@@ -1,6 +1,9 @@
 module Api
     module V1
         class NotesController < ApplicationController
+            before_action :check_login, only: %i[create]
+            before_action :check_owner, only: %i[update destroy]
+
             def index
                 note = Note.all
                 render json: NotesSerializer.new(note, options).serialized_json
@@ -41,7 +44,7 @@ module Api
             private
 
             def note_params
-                params.require(:note).permit(:letternum, :agenda, :datetim, :minutes, :addnote)
+                params.require(:note).permit(:letternum, :agenda, :datetim, :minutes, :addnote, :attendance)
             end
 
             def options
