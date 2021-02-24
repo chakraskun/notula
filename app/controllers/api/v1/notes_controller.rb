@@ -23,7 +23,7 @@ module Api
             def update
                 note = Note.find_by(id: params[:id])
                 if note.update(note_params)
-                    render json: NotesSerializer.new(notes).serialized_json
+                    render json: NotesSerializer.new(note).serialized_json
                 else
                     render json: {error: note.errors.messages}, status: 422
                 end
@@ -34,7 +34,7 @@ module Api
                 if note.destroy
                     render :no_content
                 else
-                    render json: {error: note.errors.messages}, status: 422
+                    render json: {error: note.errors.messages}, status: 204
                 end
             end
 

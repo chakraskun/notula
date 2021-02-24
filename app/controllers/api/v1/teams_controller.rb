@@ -14,7 +14,7 @@ module Api
             def create
                 team = Team.new(team_params)
                 if team.save
-                    render json: TeamSerializer.new(teams).serialized_json
+                    render json: TeamSerializer.new(team).serialized_json
                 else
                     render json: {error: team.errors.messages}, status: 422
                 end
@@ -23,7 +23,7 @@ module Api
             def update
                 team = Team.find_by(id: params[:id])
                 if team.update(team_params)
-                    render json: TeamSerializer.new(teams, options).serialized_json
+                    render json: TeamSerializer.new(team, options).serialized_json
                 else
                     render json: {error: team.errors.messages}, status: 422
                 end
@@ -34,14 +34,14 @@ module Api
                 if team.destroy
                     render :no_content
                 else
-                    render json: {error: team.errors.messages}, status: 422
+                    render json: {error: team.errors.messages}, status: 204
                 end
             end
 
             private
 
             def team_params
-                params.require(team).permit(:username, :name, :password_digest)
+                params.require(:team).permit(:username, :name, :password_digest)
             end
 
             def options

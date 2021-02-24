@@ -14,7 +14,7 @@ module Api
             def create
                 member = Member.new(member_params)
                 if member.save
-                    render json: MemberSerializer.new(members).serialized_json
+                    render json: MemberSerializer.new(member).serialized_json
                 else
                     render json: {error: member.errors.messages}, status: 422
                 end
@@ -22,7 +22,7 @@ module Api
 
             def update
                 member = Member.find_by(id: params[:id])
-                if member.save
+                if member.update(member_params)
                     render json: MemberSerializer.new(member).serialized_json
                 else
                     render json: {error: member.errors.messages}, status: 422
@@ -41,7 +41,7 @@ module Api
             private
 
             def member_params
-                params.require(member).permit(:name, :desc, :team_id)
+                params.require(:member).permit(:name, :desc, :team_id)
             end
        end 
     end
