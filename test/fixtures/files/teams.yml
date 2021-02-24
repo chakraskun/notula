@@ -1,0 +1,3 @@
+one:
+email: test01
+password_digest: hashed_password
