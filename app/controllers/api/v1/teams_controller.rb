@@ -1,6 +1,9 @@
 module Api
     module V1
         class TeamsController < ApplicationController
+            before_action :set_team, only: %i[show update destroy]
+            before_action :check_owner, only: %i[update destroy]
+            
             def index
                 teams = Team.all
                 render json: TeamSerializer.new(teams, options).serialized_json
@@ -46,6 +49,10 @@ module Api
 
             def options
                 @options ||= { include: %i[members]} 
+            end
+
+            def check_owner
+                head :forbidden unless @team.id == current_team&.id
             end
         end
     end
