@@ -1,8 +1,10 @@
 module Api
     module V1
         class TeamsController < ApplicationController
-            before_action :set_team, only: %i[show update destroy]
+            
+            before_action :set_team, only: %i[show]
             before_action :check_owner, only: %i[update destroy]
+            skip_before_action :verify_authenticity_token
             
             def index
                 teams = Team.all
@@ -44,7 +46,7 @@ module Api
             private
 
             def team_params
-                params.require(:team).permit(:username, :name, :password_digest)
+                params.require(:team).permit(:username, :name, :password)
             end
 
             def options

@@ -4,9 +4,8 @@ module Authenticable
 
         header = request.headers['Authorization']
         return nil if header.nil?
-
+        
         decode = JsonWebToken.decode(header)
-
-        @current_team = Team.find(decoded[:team_id]) rescue ActiveRecord::RecorNotFound
+        @current_team = Team.find(decoded[:team_id]) rescue ActiveRecord::RecordNotFound
     end
 end
