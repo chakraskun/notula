@@ -17,6 +17,7 @@ gem 'rswag'
 gem 'dotenv-rails'
 gem 'rexml'
 gem "bcrypt"
+gem 'simple_form'
 
 
 
@@ -28,6 +29,10 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
+  gem 'factory_bot_rails', '~> 4.0'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do

@@ -1,0 +1,12 @@
+<div class="nested-fields">
+    <%= f.hidden_field :_destroy %>
+    <div>
+        <%= f.collection_select :memberTest, Member.all, :name, :name %>
+    </div>
+    <div>
+        <%= f.input :agenda %>
+    </div>
+    <div>
+        <%= link_to "Remove", '#', class: "remove_fields" %>
+    </div>
+</div>
