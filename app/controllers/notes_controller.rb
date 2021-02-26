@@ -64,7 +64,6 @@ class NotesController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def note_params
-        params.require(:note).permit(:agenda, :note, :tanggal, :nomorsurat, :keterangan, :members_attributes => [:name])
+        params.require(:note).permit(:letternum, :agenda, :datetim, :minutes, :addnote, :attendance, :members_attributes => [:name])
       end
   end
-  

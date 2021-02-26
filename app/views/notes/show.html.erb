@@ -1,9 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Agenda:</strong>
-  <%= @note.agenda %>
+    <strong>Nomor Surat :</strong>
+    <%= @note.letternum %>
 </p>
+
+<p>
+    <strong>Agenda :</strong>
+    <%= @note.agenda %>
+</p>
+
+<p>
+    <strong>Date & Time :</strong>
+    <%= @note.datetim %>
+</p>
+
+<p>
+    <strong>Minutes :</strong>
+    <%= @note.minutes %>
+</p>
+
+<p>
+    <strong>Additional Notes :</strong>
+    <%= @note.addnote %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_note_path(@note) %> |
 <%= link_to 'Back', notes_path %>
