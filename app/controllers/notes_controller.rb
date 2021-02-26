@@ -1,5 +1,7 @@
 class NotesController < ApplicationController
     before_action :set_note, only: %i[ show edit update destroy ]
+    # before_action :check_login, only: %i[create]
+    # before_action :check_owner, only: %i[show update destroy]
   
     # GET /notes or /notes.json
     def index
@@ -21,10 +23,12 @@ class NotesController < ApplicationController
   
     # POST /notes or /notes.json
     def create
-      @note = Note.new(note_params)
-  
+      @note = current_team.Note.new(note_params)
+      # @noteteamlist = Noteteamlist.new([:team_id: [current_team.id]])
       respond_to do |format|
         if @note.save
+          noteteamlists.create(team_id: note_params[:current_team][:id])
+          # @note.noteteamlists.create(team_id: [:id])
           format.html { redirect_to @note, notice: "Note was successfully created." }
           format.json { render :show, status: :created, location: @note }
         else
@@ -64,6 +68,14 @@ class NotesController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def note_params
-        params.require(:note).permit(:letternum, :agenda, :datetim, :minutes, :addnote, :attendance, :members_attributes => [:name])
+        @note_params ||= params.require(:note).permit(:letternum, :agenda, :datetim,:addnote, :attendance, minutelists_attributes: [:id, :member, :minute, :_destroy] )
       end
+
+      # def team_params
+      #   @team_params ||= params.require(:noteteamlist).permit(:team_id)
+      # end
+
+      # def check_owner
+      #   head :forbidden unless @noteteamlist.team_id == current_team.id
+      # end
   end

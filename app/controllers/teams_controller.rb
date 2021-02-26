@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
-    # before_action :set_team, only: %i[ show edit update destroy ]
-  
+    before_action :set_team, only: %i[ show edit update destroy ]
+    skip_before_action :authorized, only: [:new, :create]
+    
     # GET /teams or /teams.json
     def index
       @teams = Team.all
@@ -22,9 +23,10 @@ class TeamsController < ApplicationController
     # POST /teams or /teams.json
     def create
       @team = Team.new(team_params)
+      session[:team_id] = @team.id
       respond_to do |format|
         if @team.save
-          format.html { redirect_to @team, notice: "Team was successfully created." }
+          format.html { redirect_to '/welcome', notice: "Team was successfully created." }
           format.json { render :show, status: :created, location: @team }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -63,7 +65,7 @@ class TeamsController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def team_params
-        @client_params ||= params.require(:team).permit(:name, :desc, :password)
+        @team_params ||= params.require(:team).permit(:name, :desc, :password)
         # params(:team).permit(:name, :desc, :password)
       end
   end

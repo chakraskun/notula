@@ -1,0 +1,9 @@
+<h1>Welcome</h1>
+<% if logged_in? %>
+<h1>You are Logged In, <%= current_team.username %></h1>
+<%end%>
+<%= button_to "Add Team Member", '/members/new', method: :get%>
+<%= button_to "List Team Member", '/members/index', method: :get%>
+<%= button_to "Add Standup Notes", '/notes/new', method: :get%>
+<%= button_to "Login", '/login', method: :get%>
+<%= button_to "Sign Up", '/teams/new', method: :get%>

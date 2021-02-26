@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Minute:</strong>
+  <%= @minutelist.minute %>
+</p>
+
+<p>
+  <strong>Member:</strong>
+  <%= @minutelist.member %>
+</p>
+
+<%= link_to 'Edit', edit_minutelist_path(@minutelist) %> |
+<%= link_to 'Back', minutelists_path %>

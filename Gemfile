@@ -18,6 +18,7 @@ gem 'dotenv-rails'
 gem 'rexml'
 gem "bcrypt"
 gem 'simple_form'
+gem 'cocoon'
 
 
 

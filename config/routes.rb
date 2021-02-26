@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  root 'notes#index'
+
+  resources :minutelists
+  resources :create_minutelists
   resources :members
-  resources :teams
+  resources :teams, only: [:new, :create]
   resources :notes
+
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'welcome', to: 'sessions#welcome'
+  get 'authorized', to: 'sessions#page_requires_login'
 
   # mount Rswag::Ui::Engine => '/api-docs'
   # mount Rswag::Api::Engine => '/api-docs'

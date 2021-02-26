@@ -1,0 +1,27 @@
+<%= form_with(model: minutelist) do |form| %>
+<% if minutelist.errors.any? %>
+<div id="error_explanation">
+    <h2><%= pluralize(minutelist.errors.count, "error") %> prohibited this minutelist from being saved:</h2>
+
+    <ul>
+        <% minutelist.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div class="field">
+    <%= form.label :minute %>
+    <%= form.text_area :minute %>
+</div>
+
+<div class="field">
+    <%= form.label :member %>
+    <%= form.text_field :member %>
+</div>
+
+<div class="actions">
+    <%= form.submit %>
+</div>
+<% end %>

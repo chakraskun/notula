@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Minutelists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Minute</th>
+      <th>Member</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @minutelists.each do |minutelist| %>
+      <tr>
+        <td><%= minutelist.minute %></td>
+        <td><%= minutelist.member %></td>
+        <td><%= link_to 'Show', minutelist %></td>
+        <td><%= link_to 'Edit', edit_minutelist_path(minutelist) %></td>
+        <td><%= link_to 'Destroy', minutelist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Minutelist', new_minutelist_path %>

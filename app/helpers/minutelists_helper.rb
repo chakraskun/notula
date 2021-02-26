@@ -1,0 +1,2 @@
+module MinutelistsHelper
+end
