@@ -6,6 +6,8 @@ class NotesController < ApplicationController
     # GET /notes or /notes.json
     def index
       @notes = Note.all
+      # @notes = Note.includes(:noteteamlists).where(noteteamlist.team_id: current_team.id)
+      # User.includes(:organizations).where('organization_users.organization_id' => current_user.organization_ids, :admin => true)
     end
   
     # GET /notes/1 or /notes/1.json
@@ -23,11 +25,11 @@ class NotesController < ApplicationController
   
     # POST /notes or /notes.json
     def create
-      @note = current_team.Note.new(note_params)
+      @note = Note.new(note_params)
       # @noteteamlist = Noteteamlist.new([:team_id: [current_team.id]])
       respond_to do |format|
         if @note.save
-          noteteamlists.create(team_id: note_params[:current_team][:id])
+          # noteteamlists.create(team_id: note_params[:current_team][:id])
           # @note.noteteamlists.create(team_id: [:id])
           format.html { redirect_to @note, notice: "Note was successfully created." }
           format.json { render :show, status: :created, location: @note }

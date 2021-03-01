@@ -14,6 +14,13 @@ class SessionsController < ApplicationController
     end
   end
 
+
+  def destroy
+    Team.find(session[:team_id]).destroy      
+    session[:team_id] = nil         
+    redirect_to '/login' 
+  end  
+
   def login
   end
 

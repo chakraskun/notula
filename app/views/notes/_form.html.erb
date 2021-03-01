@@ -3,28 +3,22 @@
 <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
 <div class="form-inputs">
-
     <%= f.input :letternum %><br>
     <%= f.input :agenda %><br>
     <%= f.input :attendance %><br>
     <%= f.input :datetim %><br>
     <%= f.input :addnote %><br>
-    <h3>minutes:</h3>
-    <div id='tasks'>
-        <%= f.simple_fields_for :tasks do |task| %>
-        <%= render 'task_fields', :f => task %>
+    <h3>member:</h3>
+    <div id='minutes'>
+        <%= f.fields_for :minutelists do |minutelist_fields| %>
+        <%= render 'minutelist_fields', f: minutelist_fields %>
         <% end %>
         <div class='links'>
-            <%= link_to_add_association 'add task', f, :tasks %>
+            <%= link_to_add_association 'add minute', f, :minutelists %>
         </div>
     </div>
 
-
-
-
-</div>
-
-<div class="form-actions">
-    <%= f.button :submit %>
-</div>
-<% end %>
+    <div class="form-actions">
+        <%= f.button :submit %>
+    </div>
+    <% end %>

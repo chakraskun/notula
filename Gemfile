@@ -19,6 +19,7 @@ gem 'rexml'
 gem "bcrypt"
 gem 'simple_form'
 gem 'cocoon'
+gem 'popper_js', '~> 2.8.6'
 
 
 

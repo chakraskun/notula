@@ -15,14 +15,25 @@
     <%= @note.datetim %>
 </p>
 
+<%
+=begin%>
 <p>
     <strong>Minutes :</strong>
     <%= @note.minutes %>
 </p>
+<%
+=end%>
 
 <p>
     <strong>Additional Notes :</strong>
     <%= @note.addnote %>
+</p>
+
+<p>
+    <strong>Minutes</strong>
+    <% for @minutelist in @note.minutelists %>
+    <li><%= @minutelist.member %> <%= @minutelist.minute %></li>
+    <%end%>
 </p>
 
 

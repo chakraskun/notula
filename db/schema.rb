@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_104035) do
+ActiveRecord::Schema.define(version: 2021_03_01_083824) do
 
   create_table "members", force: :cascade do |t|
     t.string "name"
@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(version: 2021_02_26_104035) do
     t.integer "note_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id"
+    t.boolean "attendance"
+    t.index ["member_id"], name: "index_noteteamlists_on_member_id"
     t.index ["note_id"], name: "index_noteteamlists_on_note_id"
     t.index ["team_id"], name: "index_noteteamlists_on_team_id"
   end
@@ -62,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_104035) do
 
   add_foreign_key "members", "teams"
   add_foreign_key "minutelists", "notes"
+  add_foreign_key "noteteamlists", "members"
   add_foreign_key "noteteamlists", "notes"
   add_foreign_key "noteteamlists", "teams"
 end

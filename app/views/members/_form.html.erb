@@ -4,7 +4,7 @@
 
 <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.association :team, as: :radio_buttons, include_blank: false %>
+    <%= f.association :team, :as => :hidden, :input_html => { :value => current_team.id } %>
     <%= f.input :desc %>
 </div>
 
