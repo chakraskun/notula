@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :attendances
   resources :minutelists
   resources :create_minutelists
   resources :members
-  resources :teams, only: [:new, :create]
+  resources :teams
   resources :notes
 
   get 'login', to: 'sessions#new'

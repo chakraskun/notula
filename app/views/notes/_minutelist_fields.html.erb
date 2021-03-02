@@ -1,5 +1,5 @@
 <div class='form-inputs'>
-    <%= f.input :member %>
+    <%= f.collection_select :member, Member.where(team_id: current_team.id), :name, :name %>
     <%= f.input :minute %>
     <%= link_to_remove_association 'remove minute', f %>
 </div>

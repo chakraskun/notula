@@ -6,6 +6,10 @@ class NotesController < ApplicationController
     # GET /notes or /notes.json
     def index
       @notes = Note.all
+      # @notes = Note.where(Noteteamlist.team_id: current_team.id)
+      # @noteteamlists = Noteteamlist.all
+      # @note = params[:team_id]
+      # @notes = Note.where(Noteteamlist.team_id: current_team.id)
       # @notes = Note.includes(:noteteamlists).where(noteteamlist.team_id: current_team.id)
       # User.includes(:organizations).where('organization_users.organization_id' => current_user.organization_ids, :admin => true)
     end

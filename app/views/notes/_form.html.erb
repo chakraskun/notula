@@ -5,7 +5,13 @@
 <div class="form-inputs">
     <%= f.input :letternum %><br>
     <%= f.input :agenda %><br>
-    <%= f.input :attendance %><br>
+    <%= f.label :attendance %>
+    <%= f.collection_check_boxes :attendance, Member.where(team_id: current_team.id), :name, :name, :multiple => true %>
+    <%
+=begin%>
+    <%= f.input :attendance, collection: Member.where(team_id: current_team.id), as: :check_boxes, :multiple => true %><br>
+    <%
+=end%>
     <%= f.input :datetim %><br>
     <%= f.input :addnote %><br>
     <h3>member:</h3>
