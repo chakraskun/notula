@@ -1,45 +1,45 @@
-@import "bootstrap/scss/bootstrap";
-
 .aside-menu {
-  background-color: #090f2f;
+ background-color: #090f2f;
 }
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-heading,
 .aside-menu .menu-nav > .menu-item.menu-item-active > .menu-link {
-  background-color: #090f2f;
+ background-color: #090f2f;
 }
 .aside-menu
-  .menu-nav
-  > .menu-item
-  .menu-submenu
-  .menu-item.menu-item-active
-  > .menu-heading,
+ .menu-nav
+ > .menu-item
+ .menu-submenu
+ .menu-item.menu-item-active
+ > .menu-heading,
 .aside-menu
-  .menu-nav
-  > .menu-item
-  .menu-submenu
-  .menu-item.menu-item-active
-  > .menu-link {
-  background-color: #090f2f;
+ .menu-nav
+ > .menu-item
+ .menu-submenu
+ .menu-item.menu-item-active
+ > .menu-link {
+ background-color: #090f2f;
 }
 .brand {
-  background-color: #090f2f;
+ background-color: #090f2f;
 }
 .header {
-  background-color: #090f2f;
+ background-color: #090f2f;
 }
 .aside-menu
-  .menu-nav
-  > .menu-item
-  .menu-submenu
-  .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
-  > .menu-heading,
+ .menu-nav
+ > .menu-item
+ .menu-submenu
+ .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
+ > .menu-heading,
 .aside-menu
-  .menu-nav
-  > .menu-item
-  .menu-submenu
-  .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
-  > .menu-link
-  #kt_aside_menu {
-  margin-top: 0 !important;
-  padding-top: 1rem;
+ .menu-nav
+ > .menu-item
+ .menu-submenu
+ .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
+ > .menu-link {
+}
+
+#kt_aside_menu {
+ margin-top: 0 !important;
+ padding-top: 1rem;
 }

@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @team = Team.find_by(username: params[:username])
     if @team && @team.authenticate(params[:password])
         session[:team_id] = @team.id
-        redirect_to '/welcome'
+        redirect_to root_url
     else
         redirect_to '/login'
     end
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
 
   def destroy
-    Team.find(session[:team_id]).destroy      
+    # Team.find(session).destroy      
     session[:team_id] = nil         
     redirect_to '/login' 
   end  

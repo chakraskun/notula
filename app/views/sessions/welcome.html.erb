@@ -1,9 +1,97 @@
-<h1>Welcome</h1>
-<% if logged_in? %>
-<h1>You are Logged In, <%= current_team.name %></h1>
-<%end%>
-<%= button_to "Add Team Member", '/members/new', method: :get%>
-<%= button_to "List Team Member", '/members', method: :get%>
-<%= button_to "Add Standup Notes", '/notes/new', method: :get%>
-<%= button_to "List Standup Notes", '/notes', method: :get%>
+<%
+=begin%>
 <%= button_to "Logout", '/logout', method: :delete %>
+<%
+=end%>
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center flex-wrap mr-1">
+            </div>
+            <!--end::Info-->
+            <!--begin::Toolbar-->
+            <span class="svg-icon svg-icon-md">
+                <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                <%= link_to "Logout", '/logout', method: :delete, class: 'btn btn-light-danger font-weight-bold mr-2' %>
+                <!--end::Svg Icon-->
+            </span>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Row-->
+            <div class="row">
+                <div class="col-xl-6">
+                    <!--begin::Engage Widget 9-->
+                    <div class="card card-custom card-stretch gutter-b">
+                        <div class="card-body d-flex p-0">
+                            <div class="flex-grow-1 p-20 pb-40 card-rounded flex-grow-1 bgi-no-repeat" style="background-color: #1B283F; background-position: calc(100% + 0.5rem) bottom; background-size: 50% auto; background-image: url(assets/media/svg/humans/custom-10.svg)">
+                                <h1 class="text-white pb-5 font-weight-bolder">Members</h1>
+                                <p class="text-muted pb-5 font-size-h5">See list of your team members
+                                    <br />is it your pawn ?
+                                    <br />or is it your slave ?
+                                    <br />ofc it's your friends :)</p>
+                                <%= link_to members_path, class: 'btn btn-light-warning font-weight-bold mr-2' do %>
+                                <span class="svg-icon svg-icon-md">
+                                    <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path d="M8.42034438,20 L21,20 C22.1045695,20 23,19.1045695 23,18 L23,6 C23,4.8954305 22.1045695,4 21,4 L8.42034438,4 C8.15668432,4 7.90369297,4.10412727 7.71642146,4.28972363 L0.653241109,11.2897236 C0.260966303,11.6784895 0.25812177,12.3116481 0.646887666,12.7039229 C0.648995955,12.7060502 0.651113791,12.7081681 0.653241109,12.7102764 L7.71642146,19.7102764 C7.90369297,19.8958727 8.15668432,20 8.42034438,20 Z" fill="#000000" opacity="0.3" />
+                                            <path d="M12.5857864,12 L11.1715729,10.5857864 C10.7810486,10.1952621 10.7810486,9.56209717 11.1715729,9.17157288 C11.5620972,8.78104858 12.1952621,8.78104858 12.5857864,9.17157288 L14,10.5857864 L15.4142136,9.17157288 C15.8047379,8.78104858 16.4379028,8.78104858 16.8284271,9.17157288 C17.2189514,9.56209717 17.2189514,10.1952621 16.8284271,10.5857864 L15.4142136,12 L16.8284271,13.4142136 C17.2189514,13.8047379 17.2189514,14.4379028 16.8284271,14.8284271 C16.4379028,15.2189514 15.8047379,15.2189514 15.4142136,14.8284271 L14,13.4142136 L12.5857864,14.8284271 C12.1952621,15.2189514 11.5620972,15.2189514 11.1715729,14.8284271 C10.7810486,14.4379028 10.7810486,13.8047379 11.1715729,13.4142136 L12.5857864,12 Z" fill="#000000" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>See your partner in crime</a>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Engage Widget 9-->
+                </div>
+                <div class="col-xl-6">
+                    <!--begin::Engage Widget 10-->
+                    <div class="card card-custom card-stretch gutter-b">
+                        <div class="card-body d-flex p-0">
+                            <div class="flex-grow-1 p-20 pb-40 bg-warning card-rounded flex-grow-1 bgi-no-repeat" style="background-position: calc(100% + 0.5rem) bottom; background-size: 50% auto; background-image: url(assets/media/svg/humans/custom-10.svg)">
+                                <h1 class="text-inverse-warning pb-5 font-weight-bolder">Notes</h1>
+                                <p class="text-inverse-warning pb-5 font-size-h5">Tired of copy paste-ing your minutes
+                                    <br />no need to ctrl+c & ctrl-v again
+                                    <br />now you can see your minutes list
+                                    <br />and add a new minutes ofc</p>
+                                <%= link_to notes_path, class: 'btn btn-light-dark font-weight-bold mr-2' do %>
+                                <span class="svg-icon svg-icon-md">
+                                    <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="0" y="0" width="24" height="24" />
+                                            <path d="M8.42034438,20 L21,20 C22.1045695,20 23,19.1045695 23,18 L23,6 C23,4.8954305 22.1045695,4 21,4 L8.42034438,4 C8.15668432,4 7.90369297,4.10412727 7.71642146,4.28972363 L0.653241109,11.2897236 C0.260966303,11.6784895 0.25812177,12.3116481 0.646887666,12.7039229 C0.648995955,12.7060502 0.651113791,12.7081681 0.653241109,12.7102764 L7.71642146,19.7102764 C7.90369297,19.8958727 8.15668432,20 8.42034438,20 Z" fill="#000000" opacity="0.3" />
+                                            <path d="M12.5857864,12 L11.1715729,10.5857864 C10.7810486,10.1952621 10.7810486,9.56209717 11.1715729,9.17157288 C11.5620972,8.78104858 12.1952621,8.78104858 12.5857864,9.17157288 L14,10.5857864 L15.4142136,9.17157288 C15.8047379,8.78104858 16.4379028,8.78104858 16.8284271,9.17157288 C17.2189514,9.56209717 17.2189514,10.1952621 16.8284271,10.5857864 L15.4142136,12 L16.8284271,13.4142136 C17.2189514,13.8047379 17.2189514,14.4379028 16.8284271,14.8284271 C16.4379028,15.2189514 15.8047379,15.2189514 15.4142136,14.8284271 L14,13.4142136 L12.5857864,14.8284271 C12.1952621,15.2189514 11.5620972,15.2189514 11.1715729,14.8284271 C10.7810486,14.4379028 10.7810486,13.8047379 11.1715729,13.4142136 L12.5857864,12 Z" fill="#000000" />
+                                        </g>
+                                    </svg>
+                                    <!--end::Svg Icon-->
+                                </span>See what you write</a>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Engage Widget 10-->
+                </div>
+            </div>
+            <!--end::Row-->
+        </div>
+    </div>
+    <!--end::Row-->
+</div>
+<!--end::Container-->
+</div>
+<!--end::Entry-->
+</div>
+<!--end::Content-->
