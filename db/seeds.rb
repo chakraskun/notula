@@ -20,14 +20,7 @@
 #         name: 'team lolipopiooiol'}
 # ])
   
-note = Note.create!(
-    letternum: '1231231231231231234555',
-    agenda: 'LOREM IPSUM LOREM IPSUM',
-    datetim: Time.now.to_datetime,
-    minutes: 'mama loren minutes minutes minutes',
-    addnote: 'additional note for lalalalalala purpose'
-)
-
-note.noteteamlists.create(
-    team_id: 2,
+team = Team.create!(
+    username: 'admin',
+    password: 'admin'
 )

@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.0'
 
 gem 'rails', '~> 6.1.3'
-gem 'sqlite3', '~> 1.4'
 gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'sass-rails', '>= 6'
@@ -21,6 +20,7 @@ gem "bcrypt"
 gem 'simple_form'
 gem 'cocoon'
 gem 'popper_js', '~> 2.8.6'
+gem 'bootstrap', '~> 5.0.0.beta2'
 
 
 

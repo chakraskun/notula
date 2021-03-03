@@ -1,38 +1,14 @@
-<!--begin::Step 1-->
 <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-controller="picker--location">
-    <h3 class="mb-10 font-weight-bold text-dark">Form Input Clients:</h3>
-    <div class="row">
-        <div class="form-group row fv-plugins-icon-container">
-            <label class="col-xl-3 col-lg-3 col-form-label">Name</label>
-            <div class="col-lg-9 col-xl-9">
-                <input class="form-control form-control-lg form-control-solid" name="member[name]" required="required" type="text" value="<%= @member.name %>" />
-                <div class="fv-plugins-message-container"></div>
-            </div>
+    <%= simple_form_for @member, :html => { :class => 'form-horizontal' } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+        <%= f.input :name %><br>
+        <%= f.input :desc %><br>
+        <%= f.association :team, :as => :hidden, :input_html => { :value => current_team.id }  %>
+        <div class="form-actions">
+            <%= f.button :submit %>
         </div>
+        <% end %>
     </div>
-    <div class="row">
-        <div class="form-group row fv-plugins-icon-container">
-            <label class="col-xl-3 col-lg-3 col-form-label">Description</label>
-            <div class="col-lg-9 col-xl-9">
-                <input class="form-control form-control-lg form-control-solid" name="member[desc]" required="required" type="text" value="<%= @member.desc %>" />
-                <div class="fv-plugins-message-container"></div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group row fv-plugins-icon-container">
-            <label class="col-xl-3 col-lg-3 col-form-label">Team id</label>
-            <div class="col-lg-9 col-xl-9">
-                <input class="form-control form-control-lg form-control-solid" name="member[team_id]" required="required" type="text" readonly="readonly" value="<%= current_team.id %>" />
-                <div class="fv-plugins-message-container"></div>
-            </div>
-        </div>
-    </div>
-    <!--end::Step 1-->
-    <!--begin::Actions-->
-    <div class="d-flex justify-content-between border-top mt-5 pt-10">
-        <div>
-            <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button>
-        </div>
-    </div>
-    <!--end::Actions-->
+</div>

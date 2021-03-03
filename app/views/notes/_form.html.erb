@@ -1,30 +1,27 @@
-<%= simple_form_for(@note) do |f| %>
-<%= f.error_notification %>
-<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-<div class="form-inputs">
-    <%= f.input :letternum %><br>
-    <%= f.input :agenda %><br>
-    <%= f.label :attendance %>
-    <%= f.collection_check_boxes :attendance, Member.where(team_id: current_team.id), :name, :name, :multiple => true %>
-    <%
-=begin%>
-    <%= f.input :attendance, collection: Member.where(team_id: current_team.id), as: :check_boxes, :multiple => true %><br>
-    <%
-=end%>
-    <%= f.input :datetim %><br>
-    <%= f.input :addnote %><br>
-    <h3>member:</h3>
-    <div id='minutes'>
-        <%= f.fields_for :minutelists do |minutelist_fields| %>
-        <%= render 'minutelist_fields', f: minutelist_fields %>
-        <% end %>
-        <div class='links'>
-            <%= link_to_add_association 'add minute', f, :minutelists %>
+<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-controller="picker--location">
+    <%= simple_form_for @note, :html => { :class => 'form-vertical' } do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+        <%= f.input :letternum %><br>
+        <%= f.input :agenda %><br>
+        <%= f.label :attendance %>
+        <%= f.collection_check_boxes :attendance, Member.where(team_id: current_team.id), :name, :name, :multiple => true %>
+        <%= f.input :datetim %><br>
+        <%= f.input :addnote %><br>
+        <h3>Minutes:</h3>
+        <div id='minutes'>
+            <%= f.fields_for :minutelists do |minutelist_fields| %>
+            <%= render 'minutelist_fields', f: minutelist_fields %>
+            <% end %>
+            <div class='links'>
+                <%= link_to_add_association 'add minute', f, :minutelists %>
+            </div>
         </div>
-    </div>
 
-    <div class="form-actions">
-        <%= f.button :submit %>
+        <div class="form-actions">
+            <%= f.button :submit %>
+        </div>
+        <% end %>
     </div>
-    <% end %>
+</div>
