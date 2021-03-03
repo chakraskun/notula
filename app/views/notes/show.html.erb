@@ -1,47 +1,115 @@
-<div class="notes-box">
-    <p id="notice"><%= notice %></p>
-
-    <p>
-        <strong>Nomor Surat :</strong>
-        <%= @note.letternum %>
-    </p>
-
-    <p>
-        <strong>Attendance :</strong>
-        <%= @note.attendance %>
-    </p>
-
-    <p>
-        <strong>Agenda :</strong>
-        <%= @note.agenda %>
-    </p>
-
-    <p>
-        <strong>Date & Time :</strong>
-        <%= @note.datetim %>
-    </p>
-
-    <%
-=begin%>
-    <p>
-        <strong>Minutes :</strong>
-        <%= @note.minutes %>
-    </p>
-    <%
-=end%>
-
-    <p>
-        <strong>Additional Notes :</strong>
-        <%= @note.addnote %>
-    </p>
-
-    <p>
-        <strong>Minutes</strong>
-        <% for @minutelist in @note.minutelists %>
-        <li><%= @minutelist.member %> <%= @minutelist.minute %></li>
-        <%end%>
-    </p>
-
-    <%= link_to 'Edit', edit_note_path(@note) %> |
-    <%= link_to 'Back', notes_path %>
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Subheader-->
+    <div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+        <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <!--begin::Details-->
+            <div class="d-flex align-items-center flex-wrap mr-2">
+                <!--begin::Title-->
+                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">Here's your notes on <%= @note.datetim.strftime("%A, %d %B %Y") %></h5>
+                <!--end::Title-->
+                <!--begin::Separator-->
+                <div class="subheader-separator subheader-separator-ver mt-2 mb-2 mr-5 bg-gray-200"></div>
+                <!--end::Separator-->
+                <!--begin::Search Form-->
+                <!--end::Search Form-->
+            </div>
+            <!--end::Details-->
+            <!--begin::Toolbar-->
+            <div class="d-flex align-items-center">
+                <span class="svg-icon svg-icon-md">
+                    <!--begin::Button-->
+                    <%= link_to note_path(@note, format: :pdf), class: 'btn btn-dark font-weight-bold mr-2' do %>
+                    <span class="svg-icon svg-icon-md">
+                        <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path d="M16,17 L16,21 C16,21.5522847 15.5522847,22 15,22 L9,22 C8.44771525,22 8,21.5522847 8,21 L8,17 L5,17 C3.8954305,17 3,16.1045695 3,15 L3,8 C3,6.8954305 3.8954305,6 5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,15 C21,16.1045695 20.1045695,17 19,17 L16,17 Z M17.5,11 C18.3284271,11 19,10.3284271 19,9.5 C19,8.67157288 18.3284271,8 17.5,8 C16.6715729,8 16,8.67157288 16,9.5 C16,10.3284271 16.6715729,11 17.5,11 Z M10,14 L10,20 L14,20 L14,14 L10,14 Z" fill="#000000" />
+                                <rect fill="#000000" opacity="0.3" x="8" y="2" width="8" height="2" rx="1" />
+                            </g>
+                        </svg>
+                        <!--end::Svg Icon-->
+                    </span>Print PDF</a>
+                    <% end %>
+                </span>
+                <span class="svg-icon svg-icon-md">
+                    <!--begin::Button-->
+                    <%= link_to notes_path, class: 'btn btn-light-danger font-weight-bold mr-2' do %>
+                    <span class="svg-icon svg-icon-md">
+                        <!--begin::Svg Icon | path:assets/media/svg/icons/Design/Flatten.svg-->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0" width="24" height="24" />
+                                <path d="M8.42034438,20 L21,20 C22.1045695,20 23,19.1045695 23,18 L23,6 C23,4.8954305 22.1045695,4 21,4 L8.42034438,4 C8.15668432,4 7.90369297,4.10412727 7.71642146,4.28972363 L0.653241109,11.2897236 C0.260966303,11.6784895 0.25812177,12.3116481 0.646887666,12.7039229 C0.648995955,12.7060502 0.651113791,12.7081681 0.653241109,12.7102764 L7.71642146,19.7102764 C7.90369297,19.8958727 8.15668432,20 8.42034438,20 Z" fill="#000000" opacity="0.3" />
+                                <path d="M12.5857864,12 L11.1715729,10.5857864 C10.7810486,10.1952621 10.7810486,9.56209717 11.1715729,9.17157288 C11.5620972,8.78104858 12.1952621,8.78104858 12.5857864,9.17157288 L14,10.5857864 L15.4142136,9.17157288 C15.8047379,8.78104858 16.4379028,8.78104858 16.8284271,9.17157288 C17.2189514,9.56209717 17.2189514,10.1952621 16.8284271,10.5857864 L15.4142136,12 L16.8284271,13.4142136 C17.2189514,13.8047379 17.2189514,14.4379028 16.8284271,14.8284271 C16.4379028,15.2189514 15.8047379,15.2189514 15.4142136,14.8284271 L14,13.4142136 L12.5857864,14.8284271 C12.1952621,15.2189514 11.5620972,15.2189514 11.1715729,14.8284271 C10.7810486,14.4379028 10.7810486,13.8047379 11.1715729,13.4142136 L12.5857864,12 Z" fill="#000000" />
+                            </g>
+                        </svg>
+                        <!--end::Svg Icon-->
+                    </span>Back</a>
+                    <% end %>
+                </span>
+            </div>
+            <!--end::Toolbar-->
+        </div>
+    </div>
+    <!--end::Subheader-->
+    <!--begin::Content-->
+    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+        <!--begin::Entry-->
+        <div class="d-flex flex-column-fluid">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Card-->
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <!--begin: Datatable-->
+                        <table class="table table-bordered table-hover table-checkable mt-10" id="kt_datatable">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Notulen Stand Up Divisi <%= current_team.name %><br><%= @note.letternum %></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Agenda</td>
+                                    <td><%= @note.agenda %></td>
+                                </tr>
+                                <tr>
+                                    <td>Jam & Tanggal</td>
+                                    <td><%= @note.datetim.strftime("%d %B %Y") %></td>
+                                </tr>
+                                <tr>
+                                    <td>Kehadiran</td>
+                                    <td><%= @note.attendance %></td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Hasil Standup</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><%= current_team.name %></td>
+                                    <td>Progress dan Pekerjaan</td>
+                                </tr>
+                                <tr>
+                                    <% @note.minutelists.each do |minutelist| %>
+                                    <td><%= minutelist.member %></td>
+                                    <td><%= minutelist.minute %></td>
+                                </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                        <!--end: Datatable-->
+                    </div>
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Entry-->
+    </div>
+    <!--end::Content-->
 </div>
