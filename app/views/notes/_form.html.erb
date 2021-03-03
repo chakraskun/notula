@@ -1,4 +1,5 @@
 <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-controller="picker--location">
+    <h3 class="mb-10 font-weight-bold text-dark">Notulen Stand-up :</h3>
     <%= simple_form_for @note, :html => { :class => 'form-vertical' } do |f| %>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
@@ -6,22 +7,41 @@
         <%= f.input :letternum %><br>
         <%= f.input :agenda %><br>
         <%= f.label :attendance %>
-        <%= f.collection_check_boxes :attendance, Member.where(team_id: current_team.id), :name, :name, :multiple => true %>
-        <%= f.input :datetim %><br>
+        <%= f.collection_check_boxes :attendance, Member.where(team_id: current_team.id), :name, :name, :multiple => true, item_wrapper_class: 'form-check', item_label_class: 'form-check-label', tag: 'fieldset', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' %><br>
+        <%= f.input :datetim , label: 'Date & Time'%><br>
         <%= f.input :addnote %><br>
-        <h3>Minutes:</h3>
-        <div id='minutes'>
-            <%= f.fields_for :minutelists do |minutelist_fields| %>
-            <%= render 'minutelist_fields', f: minutelist_fields %>
-            <% end %>
-            <div class='links'>
-                <%= link_to_add_association 'add minute', f, :minutelists %>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <%= f.button :submit %>
-        </div>
-        <% end %>
     </div>
 </div>
+<!--begin::Step 2-->
+<div class="pb-5" data-wizard-type="step-content">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="form-group row">
+                <div class="col-lg-9 col-xl-6">
+                    <h3 class="mb-10 font-weight-bold text-dark">Individual Result</h3>
+                </div>
+            </div>
+            <div id='minutes'>
+                <%= f.fields_for :minutelists do |minutelist_fields| %>
+                <%= render 'minutelist_fields', f: minutelist_fields %>
+                <% end %>
+                <div class='btn'>
+                    <%= link_to_add_association 'add minute', f, :minutelists %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Step 2-->
+<!--begin::Actions-->
+<div class="d-flex justify-content-between border-top mt-5 pt-10">
+    <div class="mr-2">
+        <button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit"><%= f.button :submit %></button>
+        <button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next Step</button>
+    </div>
+</div>
+<!--end::Actions-->
+<% end %>

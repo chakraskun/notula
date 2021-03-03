@@ -1,47 +1,47 @@
-<p id="notice"><%= notice %></p>
+<div class="notes-box">
+    <p id="notice"><%= notice %></p>
 
-<p>
-    <strong>Nomor Surat :</strong>
-    <%= @note.letternum %>
-</p>
+    <p>
+        <strong>Nomor Surat :</strong>
+        <%= @note.letternum %>
+    </p>
 
-<p>
-    <strong>Attendance :</strong>
-    <%= @note.attendance %>
-</p>
+    <p>
+        <strong>Attendance :</strong>
+        <%= @note.attendance %>
+    </p>
 
-<p>
-    <strong>Agenda :</strong>
-    <%= @note.agenda %>
-</p>
+    <p>
+        <strong>Agenda :</strong>
+        <%= @note.agenda %>
+    </p>
 
-<p>
-    <strong>Date & Time :</strong>
-    <%= @note.datetim %>
-</p>
+    <p>
+        <strong>Date & Time :</strong>
+        <%= @note.datetim %>
+    </p>
 
-<%
+    <%
 =begin%>
-<p>
-    <strong>Minutes :</strong>
-    <%= @note.minutes %>
-</p>
-<%
+    <p>
+        <strong>Minutes :</strong>
+        <%= @note.minutes %>
+    </p>
+    <%
 =end%>
 
-<p>
-    <strong>Additional Notes :</strong>
-    <%= @note.addnote %>
-</p>
+    <p>
+        <strong>Additional Notes :</strong>
+        <%= @note.addnote %>
+    </p>
 
-<p>
-    <strong>Minutes</strong>
-    <% for @minutelist in @note.minutelists %>
-    <li><%= @minutelist.member %> <%= @minutelist.minute %></li>
-    <%end%>
-</p>
+    <p>
+        <strong>Minutes</strong>
+        <% for @minutelist in @note.minutelists %>
+        <li><%= @minutelist.member %> <%= @minutelist.minute %></li>
+        <%end%>
+    </p>
 
-
-
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
+    <%= link_to 'Edit', edit_note_path(@note) %> |
+    <%= link_to 'Back', notes_path %>
+</div>

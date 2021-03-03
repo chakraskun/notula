@@ -1,3 +1,5 @@
+<%
+=begin%>
 <h1>Login</h1>
 <%= form_tag '/login' do %>
 <%= label_tag :username%>
@@ -6,3 +8,64 @@
 <%= password_field_tag :password%>
 <%= submit_tag "Login"%>
 <%end%>
+<%
+=end%>
+
+<div class="d-flex flex-column flex-root">
+    <!--begin::Login-->
+    <div class="login login-5 login-signin-on d-flex flex-row-fluid" id="kt_login">
+        <div class="d-flex flex-center bgi-size-cover bgi-no-repeat flex-row-fluid" style="background-image: url(https://metronic-assets.s3-ap-southeast-1.amazonaws.com/media/bg/bg-2.jpg);">
+            <div class="login-form text-center text-white p-7 position-relative overflow-hidden">
+                <!--begin::Login Header-->
+                <div class="d-flex flex-center mb-15">
+                    <a href="<%= root_path %>">
+                        <%= image_tag 'logo/logo_white_p.png', style: 'width:100px;' %><br>
+                        <%= image_tag 'logo/text_pinterusaha_white.png', style: 'width:300px;' %>
+                    </a>
+                </div>
+                <!--end::Login Header-->
+                <!--begin::Login Sign in form-->
+                <div class="login-signin">
+                    <div class="mb-15">
+                        <h3 class="opacity-40 font-weight-normal"> Minutes of Meeting Submission Apps</h3>
+                    </div>
+                    <%= form_tag '/login' do %>
+                    <div class="form-group fv-plugins-icon-container">
+                        <%#= f.email_field :email, class: 'form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8', autocomplete: "off", placeholder: 'Email' %>
+                        <div class="fv-plugins-message-container">
+                            <%= label_tag :username%>
+                            <%= text_field_tag :username %></div>
+                    </div>
+                    <div class="form-group fv-plugins-icon-container">
+                        <%#= f.password_field :password, class: 'form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8', autocomplete: "off", placeholder: 'Password' %>
+                        <div class="fv-plugins-message-container">
+                            <%= label_tag :password%>
+                            <%= password_field_tag :password%></div>
+                    </div>
+                    <div class="form-group d-flex flex-wrap justify-content-between align-items-center px-8 opacity-60">
+                        <div class="checkbox-inline">
+                            <%# <label class="checkbox checkbox-outline checkbox-white text-white m-0"> %>
+                            <%# <input type="checkbox" name="remember"> %>
+                            <span></span>
+                            <%# </label> %>
+                        </div>
+                        <a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">Lupa Password ?</a>
+                    </div>
+                    <div class="form-group text-center mt-10">
+                        <%= submit_tag "Login"%>
+                        <%
+=begin%>
+                        <button id="kt_login_signin_submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3">Masuk</button>
+                        <%
+=end%>
+                    </div>
+                    <input type="hidden">
+                    <div></div>
+                    <%- end %>
+                </div>
+                <!--end::Login Sign in form-->
+            </div>
+        </div>
+    </div>
+    <!--end::Login-->
+</div>

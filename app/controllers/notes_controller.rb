@@ -16,6 +16,19 @@ class NotesController < ApplicationController
   
     # GET /notes/1 or /notes/1.json
     def show
+      @note = scope.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf do
+          render pdf: "Invoice No.",
+          page_size: 'A4',
+          template: "notes/show.html.erb",
+          layout: "pdf.html",
+          lowquality: false,
+          zoom: 1,
+          dpi: 150
+        end
+      end
     end
   
     # GET /notes/new
@@ -75,6 +88,10 @@ class NotesController < ApplicationController
       # Only allow a list of trusted parameters through.
       def note_params
         @note_params ||= params.require(:note).permit(:letternum, :agenda, :datetim,:addnote, :attendance, minutelists_attributes: [:id, :member, :minute, :_destroy] )
+      end
+
+      def scope
+        ::Note.all
       end
 
       # def team_params

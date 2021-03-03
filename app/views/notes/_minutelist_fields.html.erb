@@ -1,5 +1,13 @@
 <div class='form-inputs'>
-    <%= f.collection_select :member, Member.where(team_id: current_team.id), :name, :name %>
-    <%= f.input :minute %>
-    <%= link_to_remove_association 'remove minute', f %>
+    <label class="col-xl-3 col-lg-3 col-form-label">
+        <%= f.collection_select :member, Member.where(team_id: current_team.id), :name, :name %>
+    </label>
+    <div class="col-lg-9 col-xl-9">
+        <%= f.input :minute, label: 'Hasil Standup'%>
+        <div class="fv-plugins-message-container">
+        </div>
+    </div>
+    <div class='btn'>
+        <%= link_to_remove_association 'remove minute', f %>
+    </div>
 </div>

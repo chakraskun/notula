@@ -1,3 +1,5 @@
+@import "note";
+
 .aside-menu {
  background-color: #090f2f;
 }
@@ -37,9 +39,8 @@
  .menu-submenu
  .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover
  > .menu-link {
-}
-
-#kt_aside_menu {
- margin-top: 0 !important;
- padding-top: 1rem;
+ #kt_aside_menu {
+  margin-top: 0 !important;
+  padding-top: 1rem;
+ }
 }

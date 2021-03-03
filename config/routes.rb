@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'sessions#welcome'
+  root 'teams#welcome'
  
+  resources :sessions
   resources :attendances
   resources :minutelists
   resources :create_minutelists
