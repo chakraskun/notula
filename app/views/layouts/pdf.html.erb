@@ -2,12 +2,59 @@
 <html>
 
 <head>
+    <style>
+    </style>
     <title>PDFs | Ruby on Rails</title>
     <%= wicked_pdf_stylesheet_link_tag "note" %>
 </head>
 
 <body>
-    <%= yield %>
+    <div class="invoice-box">
+        <table cellpadding="0" cellspacing="0">
+            <tr class="top">
+                <td colspan="2">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Notulen Stand Up Divisi <%= current_team.name %><br><%= @note.letternum %></th>
+                        </tr>
+                    </thead>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr class="heading">
+                <td colspan="2"> </td>
+            </tr>
+            <tr class="details">
+                <td>Agenda</td>
+                <td class="left"><%= @note.agenda %></td>
+            </tr>
+            <tr class="details">
+                <td>Jam & Tanggal</td>
+                <td class="left"><%= @note.datetim.strftime("%d %B %Y") %></td>
+            </tr>
+            <tr class="details">
+                <td>Kehadiran</td>
+                <td class="left"><%= @note.attendance %></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr class="heading">
+                <td colspan="2">Hasil Standup</td>
+            </tr>
+            <tr class="heading">
+                <td><%= current_team.name %> Team </td>
+                <td class="left">Progress dan Pekerjaan</td>
+            </tr>
+            <% @note.minutelists.each do |minutelist| %>
+            <tr class="details">
+                <td><%= minutelist.member %></td>
+                <td><%= minutelist.minute %></td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
 </body>
 
 </html>
