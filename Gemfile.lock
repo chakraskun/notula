@@ -107,6 +107,8 @@ GEM
       railties (>= 3.0.0)
     faker (2.16.0)
       i18n (>= 1.6, < 2)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -312,6 +314,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails (~> 4.0)
   faker
+  fast_jsonapi
   image_processing
   jbuilder (~> 2.7)
   jwt (~> 2.2)
