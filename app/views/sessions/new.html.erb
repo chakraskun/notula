@@ -27,42 +27,26 @@
                 <!--begin::Login Sign in form-->
                 <div class="login-signin">
                     <div class="mb-15">
-                        <h3 class="opacity-40 font-weight-normal"> Minutes of Meeting Submission Apps</h3>
+                        <h3 class="opacity-40 font-weight-normal"> Minutes of Meeting Apps</h3>
                     </div>
-                    <%= form_tag '/login' do %>
-                    <div class="form-group fv-plugins-icon-container">
-                        <%#= f.email_field :email, class: 'form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8', autocomplete: "off", placeholder: 'Email' %>
-                        <div class="fv-plugins-message-container">
-                            <%= label_tag :username%>
-                            <%= text_field_tag :username %></div>
+                    <%= form_with(url: login_path ) do |f| %>
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <%= f.label :username, :class => "font-size-h6 font-weight-bolder text-light" %>
+                        <%= f.text_field :username, :class => "form-control form-control-solid h-auto py-4 px-4 rounded-lg" %>
                     </div>
-                    <div class="form-group fv-plugins-icon-container">
-                        <%#= f.password_field :password, class: 'form-control h-auto text-white bg-white-o-5 rounded-pill border-0 py-4 px-8', autocomplete: "off", placeholder: 'Password' %>
-                        <div class="fv-plugins-message-container">
-                            <%= label_tag :password%>
-                            <%= password_field_tag :password%></div>
+                    <!--end::Form group-->
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <%= f.label :password, :class => "font-size-h6 font-weight-bolder text-light" %>
+                        <%= f.password_field :password, :class => "form-control form-control-solid h-auto py-4 px-4 rounded-lg"  %>
                     </div>
-                    <div class="form-group d-flex flex-wrap justify-content-between align-items-center px-8 opacity-60">
-                        <div class="checkbox-inline">
-                            <%# <label class="checkbox checkbox-outline checkbox-white text-white m-0"> %>
-                            <%# <input type="checkbox" name="remember"> %>
-                            <span></span>
-                            <%# </label> %>
-                        </div>
-                        <a href="javascript:;" id="kt_login_forgot" class="text-white font-weight-bold">Lupa Password ?</a>
-                    </div>
-                    <div class="form-group text-center mt-10">
-                        <%= submit_tag "Login"%>
-                        <%
-=begin%>
-                        <button id="kt_login_signin_submit" class="btn btn-pill btn-primary opacity-90 px-15 py-3">Masuk</button>
-                        <%
-=end%>
-                    </div>
-                    <input type="hidden">
-                    <div></div>
-                    <%- end %>
+                    <!--end::Form group-->
+                    <%= f.submit "Let me in", :class => "btn btn-primary font-weight-bolder font-size-h5 px-7 py-4 my-3 mr-4" %>
+                    <% end %>
+
                 </div>
+
                 <!--end::Login Sign in form-->
             </div>
         </div>

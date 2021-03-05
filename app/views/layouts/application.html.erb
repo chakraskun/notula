@@ -44,6 +44,7 @@
 </head>
 
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+    <!--begin flash-->
     <%- if flash.present? %>
     <%- flash.each do |type, message| %>
     <div style="z-index:100;position:fixed;width:100%;top:0;" class="alert alert-custom alert-light-<%= type %> fade show mb-5" role="alert">
@@ -61,6 +62,7 @@
     </div>
     <%- end %>
     <%- end %>
+    <!--end flash-->
     <!--begin::Main-->
     <%= render 'shared/header' %>
     <div class="d-flex flex-column flex-root">

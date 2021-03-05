@@ -1,5 +1,5 @@
 class Note < ApplicationRecord
-    has_many :noteteamlists
+    has_many :noteteamlists, :dependent => :delete_all
     has_many :teams, through: :noteteamlists
     has_many :minutelists, inverse_of: :note, :dependent => :delete_all
     has_many :members, through: :noteteamlists
