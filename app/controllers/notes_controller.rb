@@ -6,12 +6,6 @@ class NotesController < ApplicationController
     # GET /notes or /notes.json
     def index
       @notes = Note.all
-      # @notes = Note.where(Noteteamlist.team_id: current_team.id)
-      # @noteteamlists = Noteteamlist.all
-      # @note = params[:team_id]
-      # @notes = Note.where(Noteteamlist.team_id: current_team.id)
-      # @notes = Note.includes(:noteteamlists).where(noteteamlist.team_id: current_team.id)
-      # User.includes(:organizations).where('organization_users.organization_id' => current_user.organization_ids, :admin => true)
     end
   
     # GET /notes/1 or /notes/1.json
@@ -26,7 +20,16 @@ class NotesController < ApplicationController
           layout: "pdf.html",
           lowquality: false,
           zoom: 1,
-          dpi: 150
+          dpi: 150,
+          margin:{
+            top: 2,
+            bottom: 2
+          },
+          footer: {
+            html: {
+              template: "layouts/_footer_pdf.html.erb"
+            }
+          }
         end
       end
     end
@@ -43,11 +46,9 @@ class NotesController < ApplicationController
     # POST /notes or /notes.json
     def create
       @note = Note.new(note_params)
-      # @noteteamlist = Noteteamlist.new([:team_id: [current_team.id]])
       respond_to do |format|
         if @note.save
-          # noteteamlists.create(team_id: note_params[:current_team][:id])
-          # @note.noteteamlists.create(team_id: [:id])
+          @note.noteteamlists.create(team_id: current_team.id)
           format.html { redirect_to @note, notice: "Note was successfully created." }
           format.json { render :show, status: :created, location: @note }
         else
@@ -87,16 +88,13 @@ class NotesController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def note_params
-        @note_params ||= params.require(:note).permit(:letternum, :agenda, :datetim,:addnote, :attendance, minutelists_attributes: [:id, :member, :minute, :_destroy] )
+        # params[:note][:attendance] ||= []
+        @note_params ||= params.require(:note).permit(:letternum, :agenda, :datetim, :addnote, :attend => [], minutelists_attributes: [:id, :member, :minute, :_destroy] )
       end
 
       def scope
         ::Note.all
       end
-
-      # def team_params
-      #   @team_params ||= params.require(:noteteamlist).permit(:team_id)
-      # end
 
       # def check_owner
       #   head :forbidden unless @noteteamlist.team_id == current_team.id

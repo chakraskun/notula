@@ -77,11 +77,11 @@
                                 </tr>
                                 <tr>
                                     <td>Jam & Tanggal</td>
-                                    <td><%= @note.datetim.strftime("%d %B %Y") %></td>
+                                    <td><%= @note.datetim.strftime("%d %B %Y, %H:%M") %></td>
                                 </tr>
                                 <tr>
                                     <td>Kehadiran</td>
-                                    <td><%= @note.attendance %></td>
+                                    <td><%= @note.attend.split(',').join("\n").gsub!(/([^\n]\n)(?=[^\n])/, '\1<br />').html_safe %></td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -97,7 +97,7 @@
                                 <tr>
                                     <% @note.minutelists.each do |minutelist| %>
                                     <td><%= minutelist.member %></td>
-                                    <td><%= minutelist.minute %></td>
+                                    <td><%= minutelist.minute.split(',').join("\n").gsub!(/([^\n]\n)(?=[^\n])/, '\1<br />').html_safe %></td>
                                 </tr>
                                 <% end %>
                             </tbody>

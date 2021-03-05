@@ -1,14 +1,18 @@
 <!-- begin::User Panel-->
 <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
     <!--begin::Header-->
+    <%
+=begin%>
     <%- if signed_in? %>
+    <%
+=end%>
     <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
         <h3 class="font-weight-bold m-0">Profil Pengguna
             <%# <small class="text-muted font-size-sm ml-2">12 messages</small></h3> %>
             <a href="#" class="btn btn-xs btn-info btn-light btn-hover-primary" id="kt_quick_user_close">
                 <i class="ki ki-close icon-xs text-muted"></i>
             </a>
-            <%= link_to 'Update Profil', edit_user_path(current_user), class: 'font-weight-bold btn btn-light-info' %>
+            <%= link_to 'Update Profil', edit_user_path(current_team), class: 'font-weight-bold btn btn-light-info' %>
     </div>
     <!--end::Header-->
     <!--begin::Content-->

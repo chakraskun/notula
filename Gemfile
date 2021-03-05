@@ -22,19 +22,33 @@ gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'rspec'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+gem 'image_processing'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
-
+    gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-rails'
+  gem 'factory_bot_rails', '~> 4.0'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do
-
+gem 'web-console', '>= 4.1.0'
+  gem 'rack-mini-profiler', '~> 2.0'
+  gem 'listen', '~> 3.3'
+  gem 'spring'
 end
 
 group :test do
-
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

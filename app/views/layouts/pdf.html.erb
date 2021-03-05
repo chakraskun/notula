@@ -9,21 +9,13 @@
 </head>
 
 <body>
+    <div id="header">
+        <%= image_tag wicked_pdf_asset_base64('hdwg.png') %>
+    </div>
     <div class="invoice-box">
-        <table cellpadding="0" cellspacing="0">
-            <tr class="top">
-                <td colspan="2">
-                    <thead>
-                        <tr>
-                            <th colspan="2">Notulen Stand Up Divisi <%= current_team.name %><br><%= @note.letternum %></th>
-                        </tr>
-                    </thead>
-                </td>
-            </tr>
-        </table>
         <table>
             <tr class="heading">
-                <td colspan="2"> </td>
+                <td colspan="2">Notulen Stand Up Divisi <%= current_team.name %><br><%= @note.letternum %></td>
             </tr>
             <tr class="details">
                 <td>Agenda</td>
@@ -31,26 +23,24 @@
             </tr>
             <tr class="details">
                 <td>Jam & Tanggal</td>
-                <td class="left"><%= @note.datetim.strftime("%d %B %Y") %></td>
+                <td class="left"><%= @note.datetim.strftime("%d %B %Y, %H:%M") %></td>
             </tr>
             <tr class="details">
                 <td>Kehadiran</td>
-                <td class="left"><%= @note.attendance %></td>
+                <td><strong>Team <%= current_team.name %></strong>;<br><%= @note.attend.split(',').join("\n").gsub!(/([^\n]\n)(?=[^\n])/, '\1<br />').html_safe %></td>
             </tr>
-        </table>
-
-        <table>
+            <br>
             <tr class="heading">
                 <td colspan="2">Hasil Standup</td>
             </tr>
             <tr class="heading">
                 <td><%= current_team.name %> Team </td>
-                <td class="left">Progress dan Pekerjaan</td>
+                <td>Progress dan Pekerjaan</td>
             </tr>
             <% @note.minutelists.each do |minutelist| %>
             <tr class="details">
                 <td><%= minutelist.member %></td>
-                <td><%= minutelist.minute %></td>
+                <td><%= minutelist.minute.split(',').join("\n").gsub!(/([^\n]\n)(?=[^\n])/, '\1<br />').html_safe %></td>
             </tr>
             <% end %>
         </table>

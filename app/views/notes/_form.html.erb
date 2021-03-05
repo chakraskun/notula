@@ -7,7 +7,7 @@
         <%= f.input :letternum %><br>
         <%= f.input :agenda %><br>
         <%= f.label :attendance %>
-        <%= f.collection_check_boxes :attendance, Member.where(team_id: current_team.id), :name, :name, :multiple => true, item_wrapper_class: 'form-check', item_label_class: 'form-check-label', tag: 'fieldset', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' %><br>
+        <%= f.collection_check_boxes :attend, Member.where(team_id: current_team.id), :name, :name, :multiple => true, item_wrapper_class: 'form-check', item_label_class: 'form-check-label', tag: 'fieldset', class: 'form-group', error_class: 'form-group-invalid', valid_class: 'form-group-valid' %><br>
         <%= f.input :datetim , label: 'Date & Time'%><br>
         <%= f.input :addnote %><br>
     </div>
