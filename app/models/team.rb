@@ -1,4 +1,5 @@
 class Team < ApplicationRecord
+  rolify
     has_secure_password
     has_many :members
     has_many :noteteamlists
