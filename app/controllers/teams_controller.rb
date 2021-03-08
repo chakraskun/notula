@@ -1,7 +1,12 @@
 class TeamsController < ApplicationController
-    # before_action :set_team, only: %i[ show edit update destroy ]
+    before_action :set_team, only: %i[ show edit update destroy ]
     # skip_before_action :authorized, only: [:new, :create]
-    
+    # after_create :assign_default_role
+
+    # def assign_default_role
+    #   self.add_role(:normal) if self.roles.blank?
+    # end
+
     # GET /teams or /teams.json
     def index
       @teams = Team.all
@@ -66,5 +71,5 @@ class TeamsController < ApplicationController
       def team_params
         @team_params ||= params.require(:team).permit(:username, :name, :desc, :password)
       end
-  end
+end
   
