@@ -24,7 +24,6 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'image_processing'
 gem 'fast_jsonapi'
-gem 'rolify'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 
