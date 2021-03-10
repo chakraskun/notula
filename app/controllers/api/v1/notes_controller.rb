@@ -9,19 +9,19 @@ module Api
 
       def index
         note = Note.all
-        render json: NotesSerializer.new(note, options).serialized_json
+        render json: NotesSerializer.new(note, options).serializable_hash
       end
 
       def show
         note = Note.find_by(id: params[:id])
-        render json: NotesSerializer.new(note, options).serialized_json
+        render json: NotesSerializer.new(note, options).serializable_hash
       end
 
       def create
         note = Note.new(note_params)
         if note.save
           note.noteteamlists.create(team_id: params[:note][:team][:id])
-          render json: NotesSerializer.new(note, options).serialized_json
+          render json: NotesSerializer.new(note, options).serializable_hash
         else
           render json: { error: note.errors.messages }, status: 422
         end
@@ -30,7 +30,7 @@ module Api
       def update
         note = Note.find_by(id: params[:id])
         if note.update(note_params)
-          render json: NotesSerializer.new(note).serialized_json
+          render json: NotesSerializer.new(note).serializable_hash
         else
           render json: { error: note.errors.messages }, status: 422
         end
@@ -52,7 +52,7 @@ module Api
       end
 
       def options
-        @options ||= { include: %i[teams] }
+        @options ||= { include: %i[teams minutelists] }
       end
 
       # def check_owner

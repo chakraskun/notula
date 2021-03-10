@@ -9,18 +9,18 @@ module Api
 
       def index
         teams = Team.all
-        render json: TeamSerializer.new(teams, options).serialized_json
+        render json: TeamSerializer.new(teams, options).serializable_hash
       end
 
       def show
         team = Team.find_by(id: params[:id])
-        render json: TeamSerializer.new(team, options).serialized_json
+        render json: TeamSerializer.new(team, options).serializable_hash
       end
 
       def create
         team = Team.new(team_params)
         if team.save
-          render json: TeamSerializer.new(team).serialized_json
+          render json: TeamSerializer.new(team).serializable_hash
         else
           render json: { error: team.errors.messages }, status: 422
         end
@@ -29,7 +29,7 @@ module Api
       def update
         team = Team.find_by(id: params[:id])
         if team.update(team_params)
-          render json: TeamSerializer.new(team, options).serialized_json
+          render json: TeamSerializer.new(team, options).serializable_hash
         else
           render json: { error: team.errors.messages }, status: 422
         end

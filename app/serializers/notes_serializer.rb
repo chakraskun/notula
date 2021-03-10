@@ -2,8 +2,8 @@
 
 class NotesSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :letternum, :agenda, :datetim, :minutes, :addnote, :attendance, :attend, 
+  attributes :letternum, :agenda, :datetim, :addnote, :attend 
 
-  has_many :noteteamlists, serializer: NoteteamlistSerializer
   has_many :teams, serializer: TeamSerializer
+  has_many :minutelists, serializer: MinutelistSerializer
 end

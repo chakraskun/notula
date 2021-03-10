@@ -3,9 +3,9 @@
 class ApplicationController < ActionController::Base
   # include Authenticable
 
-  before_action :authorized
-  helper_method :current_team
-  helper_method :logged_in?
+  # before_action :authorized
+  # helper_method :current_team
+  # helper_method :logged_in?
 
   def current_team
     Team.find_by(id: session[:team_id])
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized
-    redirect_to '/welcome' unless logged_in?
+    redirect_to root_path unless logged_in?
   end
 
   # protected
