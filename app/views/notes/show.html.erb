@@ -49,6 +49,14 @@
                     </span>Back</a>
                     <% end %>
                 </span>
+                <%= render partial: 'savedrive' %>
+                <%
+=begin%>
+                <script src="https://apis.google.com/js/platform.js" async defer></script>
+                <div class="g-savetodrive" data-src="http://localhost:3000/notes/31.pdf" data-filename="test.pdf" data-sitename="My Company Name">
+                </div>
+                <%
+=end%>
             </div>
             <!--end::Toolbar-->
         </div>

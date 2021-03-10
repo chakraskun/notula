@@ -1,49 +1,56 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
-gem 'rails', '~> 6.1.3'
-gem 'pg'
-gem 'puma', '~> 5.0'
-gem 'sass-rails', '>= 6'
-gem 'webpacker', '~> 5.0'
-gem 'turbolinks', '~> 5'
+gem 'bcrypt'
+gem 'bootstrap', '~> 5.0.0.beta2'
+gem 'cocoon'
+gem 'dotenv-rails'
+gem 'fast_jsonapi'
+gem 'image_processing'
 gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
-gem 'rswag'
-gem 'dotenv-rails'
-gem 'rexml'
-gem "bcrypt"
-gem 'simple_form'
-gem 'cocoon'
+gem 'multi_json'
+gem 'pg'
 gem 'popper_js', '~> 2.8.6'
-gem 'bootstrap', '~> 5.0.0.beta2'
+gem 'puma', '~> 5.0'
+gem 'rails', '~> 6.1.3'
+gem 'rexml'
+gem 'rolify'
 gem 'rspec'
+gem 'rswag'
+gem 'sass-rails', '>= 6'
+gem 'simple_form'
+gem 'turbolinks', '~> 5'
+gem 'webpacker', '~> 5.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-gem 'image_processing'
-gem 'fast_jsonapi'
+gem 'sidekiq'
+gem 'oauth2'
 
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'rubocop', require: false
 
 group :development, :test do
-    gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner'
+  gem 'factory_bot_rails', '~> 4.0'
+  gem 'faker'
   gem 'pry'
   gem 'pry-nav'
   gem 'pry-rails'
-  gem 'factory_bot_rails', '~> 4.0'
+  gem 'rspec-rails'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'faker'
-  gem 'database_cleaner'
 end
 
 group :development do
-gem 'web-console', '>= 4.1.0'
-  gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
+  gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'
+  gem 'web-console', '>= 4.1.0'
 end
 
 group :test do
@@ -52,7 +59,7 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-
-gem "jwt", "~> 2.2"
+gem 'google-apis-drive_v3'
+gem 'jwt', '~> 2.2'

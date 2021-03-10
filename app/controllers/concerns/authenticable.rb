@@ -1,11 +1,17 @@
-module Authenticable
-    def current_team
-        return @current_team if @current_team
+# frozen_string_literal: true
 
-        header = request.headers['Authorization']
-        return nil if header.nil?
-        
-        decode = JsonWebToken.decode(header)
-        @current_team = Team.find(decoded[:team_id]) rescue ActiveRecord::RecordNotFound
+module Authenticable
+  def current_team
+    return @current_team if @current_team
+
+    header = request.headers['Authorization']
+    return nil if header.nil?
+
+    decode = JsonWebToken.decode(header)
+    @current_team = begin
+      Team.find(decoded[:team_id])
+    rescue StandardError
+      ActiveRecord::RecordNotFound
     end
+  end
 end

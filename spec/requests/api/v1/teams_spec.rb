@@ -1,12 +1,11 @@
+# frozen_string_literal: true
+
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/teams', type: :request do
-
   path '/api/v1/teams' do
-
     get('list teams') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -20,7 +19,6 @@ RSpec.describe 'api/v1/teams', type: :request do
 
     post('create team') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -34,10 +32,8 @@ RSpec.describe 'api/v1/teams', type: :request do
   end
 
   path '/api/v1/teams/new' do
-
     get('new team') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Api
   module V1
     class TokensController < ApplicationController
@@ -12,8 +14,9 @@ module Api
           head :unauthorized
         end
       end
-    
+
       private
+
       def team_params
         params.require(:team).permit(:username, :password)
       end

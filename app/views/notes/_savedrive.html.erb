@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Save to Drive Demo: Explicit Render</title>
+    <link rel="canonical" href="http://www.example.com">
+    <script>
+        window.___gcfg = {
+            parsetags: 'explicit'
+        };
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body>
+    <div id="savetodrive-div"></div>
+    <script>
+        function savetodrive() {
+            gapi.savetodrive.render('savetodrive-div', {
+                src: window.location.href + '.pdf', //window.location.href
+                filename: 'Notulensi' + window.location.href,
+                sitename: 'localhost'
+            });
+        }
+        window.addEventListener('load', savetodrive);
+    </script>
+</body>
+
+</html>
